@@ -4,10 +4,91 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mood</title>
+
+  <style type="text/css">
+    /* Split the screen in half */
+    .split {
+      height: 100%;
+      width: 50%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      overflow-x: hidden;
+      padding-top: 20px;
+    }
+
+    /* Control the left side */
+    .left {
+      left: 0;
+      background-color: green;
+    }
+
+    /* Control the right side */
+    .right {
+      right: 0;
+      background-color: red;
+    }
+
+    /* If you want the content centered horizontally and vertically */
+    .centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    /* Style the image inside the centered container, if needed */
+    .centered img {
+      width: 150px;
+      border-radius: 50%;
+    }
+
+    .text {
+      color: white;
+      font-family: "Arial";
+    }
+
+    #culo {
+      position:relative;
+      z-index: 10;
+      background-color: black;
+      padding: 0px;
+      margin: 0px;
+    }
+
+    h1 {text-align: center;}
+  </style>
 </head>
 <body>
 
-  <a href="geo:44.5038497,11.3525801" target="_blank">Click here for map</a>
+  <h1 class="text" id="culo">Stai bene?</h1> 
 
+  
+  <div class="split left"  onclick="add()" style="cursor: pointer;">
+    <div class="centered">
+      <h1 class="text">Sì</h1>
+    </div>
+  </div>
+
+<a href="http://maps.apple.com/?daddr=44.50404327492612, 11.35366008303772" target="_blank">
+  <div class="split right">
+    <div class="centered">
+      <h1 class="text">No</h1>
+    </div>
+  </div>
+</a>
+
+  <script type="text/javascript">
+    let clicks = 0;
+
+    add = () => {
+      ++clicks;
+
+      text = document.getElementById("culo");
+
+      text.innerText = "Sei" + (" sicuro".repeat(clicks)) + "?";
+    }
+  </script>
 </body>
 </html>
